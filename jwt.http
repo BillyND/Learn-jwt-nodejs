@@ -1,0 +1,9 @@
+GET http://localhost:5001/books
+
+###
+POST http://localhost:5001/login
+
+{
+  "username": "bobbyhadz",
+  "password": "dogsandcats123"
+}
