@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
-dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -17,6 +17,13 @@ const books = [
   },
 ];
 
+//config dotenv
+dotenv.config();
+
+//config req.body
+app.use(express.json()); //for json
+app.use(express.urlencoded({ extended: true })); //for form data
+
 app.get("/books", (req, res) => {
   res.status(200).json({
     status: "Success",
@@ -28,10 +35,7 @@ app.post("/login", (req, res) => {
   //Authentication
 
   //Authorization
-  const data = {
-    username: "bobbyhadz",
-    password: "dogsandcats123",
-  };
+  const data = req.body;
   const accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "30s",
   });

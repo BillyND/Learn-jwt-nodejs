@@ -1,7 +1,8 @@
-GET http://localhost:5001/books
+GET http://localhost:5000/books
 
 ###
-POST http://localhost:5001/login
+POST http://localhost:5000/login
+content-type: application/json
 
 {
   "username": "bobbyhadz",
